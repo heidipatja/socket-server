@@ -10,7 +10,7 @@ function getTimeStamp() {
     return now;
 }
 
-io.origins(['https://socket-server.heidipatja.me:443']);
+io.origins(['https://heidipatja.me:443']);
 
 io.on("connection", function (socket) {
 
