@@ -10,7 +10,7 @@ function getTimeStamp() {
     return now;
 }
 
-io.origins(['https://heidipatja.me:443']);
+io.origins(['https://heidipatja.me:443', "http://localhost:3000"]);
 
 io.on("connection", function (socket) {
 
@@ -22,7 +22,7 @@ io.on("connection", function (socket) {
         } else {
             socket.username = username;
             activeUser = true;
-            io.emit("message", { timestamp: getTimeStamp(), message: `${username} har anslutit till chatten.`})
+            io.emit("message", { username: "Admin", timestamp: getTimeStamp(), message: `${username} har anslutit till chatten.`})
         }
     });
 
@@ -31,7 +31,7 @@ io.on("connection", function (socket) {
     });
 
     socket.on("disconnect", function() {
-        io.emit("message", { timestamp: getTimeStamp(), message: `${socket.username} har lämnat chatten.`})
+        io.emit("message", { username: "Admin", timestamp: getTimeStamp(), message: `${socket.username} har lämnat chatten.`})
     });
 });
 
