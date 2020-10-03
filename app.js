@@ -6,7 +6,7 @@ const io = require('socket.io')(server);
 
 function getTimeStamp() {
     let now = new Date();
-    now = now.toLocaleTimeString("sv-SE", { hour12: false });
+    now = now.toLocaleTimeString("sv-SE", { timeZone: "Europe/Stockholm", hour12: false });
     return now;
 }
 
