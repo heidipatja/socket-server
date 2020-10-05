@@ -31,7 +31,11 @@ io.on("connection", function (socket) {
     });
 
     socket.on("disconnect", function() {
-        io.emit("message", { username: "Admin", timestamp: getTimeStamp(), message: `${socket.username} har lämnat chatten.`})
+        if (!activeUser) {
+            return;
+        } else {
+            io.emit("message", { username: "Admin", timestamp: getTimeStamp(), message: `${socket.username} har lämnat chatten.`})
+        }
     });
 });
 
